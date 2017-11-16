@@ -55,16 +55,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String connectionsJSONString = getPreferences(MODE_PRIVATE).getString(KEY_CONNECTIONS, null);
-                List<String> objlist = new LinkedList<>();
-                String s="q";
 
-               // List < String > objlist1 = new Gson().fromJson(connectionsJSONString, s);
-
-
-                Example example = new Gson().fromJson(connectionsJSONString, Example.class);
-
-                example.getA();
-                Log.d(TAG, "onClick: "+example.getA());
+                Example[] example = new Gson().fromJson(connectionsJSONString, Example[].class);
+                Log.d(TAG, "onClick: "+example);
+                for(int j=0;j<10;j++) {
+                    String output=example[j].getA();
+                    Log.d(TAG, "onClick: " +output );
+                }
 
             }
         });
